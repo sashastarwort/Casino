@@ -1,0 +1,667 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD25\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">6/3/2026</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">3:40:58 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc" class="file"><acronym title="C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc">C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">109</td></tr>
+</table>
+</td>
+</table><a name="IDMXN4SENTV0UQQJBWNP22O2NRCWVT5TUCMUDJVL2IFA5M1C5UJM"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBA3BEUXUGRTQPF43Z2OX4B3EFEZTSMOOOKHU53CTUUGXW5XYKQK">Clearance Constraint (Gap=6mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVOO0SZBI5EOII0EC2BGJ1BXKIBDOHQC2RWJHVBBY5G25LRHLICEE">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDY5QH4FWT30CSHLQ3H3QYHQCFWPRGVH3AO2M3WDP3IAFLMYN4LIBO">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">87</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDYRBC2WC3TI11PLMAQNIDOSWRMBLGRHCCV34GRWELTEMYLJGMAFLO">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHCOBZOTMLO5OKDI5E0MUDE0XKNBLIDRBJRN3EGJ0HJNKZP5HWDFP">Width Constraint (Min=10mil) (Max=100mil) (Preferred=50mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDREKM2XB54KR0JMPLFO5UKP5WLI1WSGQJRHM0XSE3QVR21UVTDKTN">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLY1LXJ14STSCLDTWKTE3WYZWMCBENMBBDIND2IOND1J4YOPBG1F">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0HOWCOK3UMNCDIQ3JE2YWHF2SPXSW0S10Q0UXDEURMOTLZGUMMZM">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIL0RQBY1XSQKDC1SC4J4KXWNINJ5LBQP1210GVPYDTUTP2GNB3MH">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDELX4VJRRHINDMXCSA1UHNDOYKHHM40HHMXGG01OIXZRTJWMB5DDD">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">21</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUXDP3JQIZGLMB434WDLREZ3GIBAL0BNSXV04N5BZGDRXZHUWMV2M">Silk To Solder Mask (Clearance=8mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQBDPUAHJCTWEDWIFJIXVKL1GGKPNC0BZPAMWEAHIOFQSSEKB0EJB">Silk to Silk (Clearance=8mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXJKOCP0YBQF1CQWNWW4DWR3Z4GDDINAVY3M3LNGGD3QPQ3CXNO2L">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQDP1QG1MMVRLF0AS3FAWTLLFRL3URBVJVXYPIELRQWJQX4ICX1CC">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">109</td>
+</tr>
+</table><br><a name="IDY5QH4FWT30CSHLQ3H3QYHQCFWPRGVH3AO2M3WDP3IAFLMYN4LIBO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7586.551mil|Location2.X=8293.567mil|Location1.Y=1716.039mil|Location2.Y=1889.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7586.551mil|Location2.X=8293.567mil|Location1.Y=1716.039mil|Location2.Y=1889.433mil|Absolute=True">Un-Routed Net Constraint: Net NetB1_1 Between Pad B1-1(7628.937mil,1758.425mil) on Multi-Layer And Pad R20-1(8264.961mil,1850mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7071.354mil|Location2.X=7671.323mil|Location1.Y=1519.189mil|Location2.Y=1889.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7071.354mil|Location2.X=7671.323mil|Location1.Y=1519.189mil|Location2.Y=1889.433mil|Absolute=True">Un-Routed Net Constraint: Net NetB1_2 Between Pad R21-1(7099.961mil,1850mil) on Top Layer And Pad B1-2(7628.937mil,1561.575mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8078.677mil|Location2.X=8163.449mil|Location1.Y=1519.189mil|Location2.Y=1800.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8078.677mil|Location2.X=8163.449mil|Location1.Y=1519.189mil|Location2.Y=1800.811mil|Absolute=True">Un-Routed Net Constraint: Net C3 Between Pad B1-4(8121.063mil,1561.575mil) on Multi-Layer And Pad B1-3(8121.063mil,1758.425mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8078.677mil|Location2.X=10282.701mil|Location1.Y=1688.165mil|Location2.Y=1800.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8078.677mil|Location2.X=10282.701mil|Location1.Y=1688.165mil|Location2.Y=1800.811mil|Absolute=True">Un-Routed Net Constraint: Net C3 Between Pad B1-3(8121.063mil,1758.425mil) on Multi-Layer And Pad U5-13(10249.173mil,1701.024mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8074.386mil|Location2.X=8398.567mil|Location1.Y=4909.583mil|Location2.Y=4990.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8074.386mil|Location2.X=8398.567mil|Location1.Y=4909.583mil|Location2.Y=4990.417mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad C8-1(8103.976mil,4950mil) on Top Layer And Pad C10-1(8368.976mil,4950mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8339.386mil|Location2.X=9133.055mil|Location1.Y=4909.583mil|Location2.Y=4990.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8339.386mil|Location2.X=9133.055mil|Location1.Y=4909.583mil|Location2.Y=4990.417mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad C10-1(8368.976mil,4950mil) on Top Layer And Pad U2-16(9103.268mil,4950mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9730.709mil|Location2.X=10573.567mil|Location1.Y=4909.583mil|Location2.Y=4990.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9730.709mil|Location2.X=10573.567mil|Location1.Y=4909.583mil|Location2.Y=4990.417mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad J1-B4_A9(9744.488mil,4952.205mil) on Top Layer And Pad C1-1(10543.976mil,4950mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10514.386mil|Location2.X=11152.543mil|Location1.Y=4908.756mil|Location2.Y=4990.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10514.386mil|Location2.X=11152.543mil|Location1.Y=4908.756mil|Location2.Y=4990.417mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad C1-1(10543.976mil,4950mil) on Top Layer And Pad U1-16(11126.299mil,4935mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10389.386mil|Location2.X=10737.465mil|Location1.Y=3038.047mil|Location2.Y=3290.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10389.386mil|Location2.X=10737.465mil|Location1.Y=3038.047mil|Location2.Y=3290.417mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad C11-1(10418.976mil,3250mil) on Top Layer And Pad D9-C(10700mil,3091.26mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10265.055mil|Location2.X=10448.567mil|Location1.Y=3208.756mil|Location2.Y=3290.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10265.055mil|Location2.X=10448.567mil|Location1.Y=3208.756mil|Location2.Y=3290.417mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad U3-16(10291.299mil,3235mil) on Multi-Layer And Pad C11-1(10418.976mil,3250mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7809.386mil|Location2.X=8916.52mil|Location1.Y=4783.795mil|Location2.Y=4990.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7809.386mil|Location2.X=8916.52mil|Location1.Y=4783.795mil|Location2.Y=4990.417mil|Absolute=True">Un-Routed Net Constraint: Net NetC2_1 Between Pad C2-1(7838.976mil,4950mil) on Top Layer And Pad U2-4(8886.732mil,4800mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11100.055mil|Location2.X=11508.567mil|Location1.Y=3209.583mil|Location2.Y=4561.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11100.055mil|Location2.X=11508.567mil|Location1.Y=3209.583mil|Location2.Y=4561.244mil|Absolute=True">Un-Routed Net Constraint: Net D2 Between Pad U1-12(11126.299mil,4535mil) on Multi-Layer And Pad C3-1(11478.976mil,3250mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10265.055mil|Location2.X=11508.567mil|Location1.Y=2808.756mil|Location2.Y=3290.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10265.055mil|Location2.X=11508.567mil|Location1.Y=2808.756mil|Location2.Y=3290.417mil|Absolute=True">Un-Routed Net Constraint: Net D2 Between Pad U3-12(10291.299mil,2835mil) on Multi-Layer And Pad C3-1(11478.976mil,3250mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7354.386mil|Location2.X=8133.567mil|Location1.Y=3209.583mil|Location2.Y=4990.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7354.386mil|Location2.X=8133.567mil|Location1.Y=3209.583mil|Location2.Y=4990.417mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad C4-1(7383.976mil,3250mil) on Top Layer And Pad C8-1(8103.976mil,4950mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9073.52mil|Location2.X=9563.567mil|Location1.Y=1809.583mil|Location2.Y=1900.535mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9073.52mil|Location2.X=9563.567mil|Location1.Y=1809.583mil|Location2.Y=1900.535mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad P1-1(9110mil,1864.055mil) on Multi-Layer And Pad C5-1(9533.976mil,1850mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9504.386mil|Location2.X=10054.354mil|Location1.Y=1662.575mil|Location2.Y=1890.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9504.386mil|Location2.X=10054.354mil|Location1.Y=1662.575mil|Location2.Y=1890.417mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad C5-1(9533.976mil,1850mil) on Top Layer And Pad U5-9(10020.827mil,1675.433mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8494.386mil|Location2.X=10054.354mil|Location1.Y=1688.165mil|Location2.Y=1890.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8494.386mil|Location2.X=10054.354mil|Location1.Y=1688.165mil|Location2.Y=1890.417mil|Absolute=True">Un-Routed Net Constraint: Net NetC6_1 Between Pad C6-1(8523.976mil,1850mil) on Top Layer And Pad U5-8(10020.827mil,1701.024mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11100.055mil|Location2.X=11283.567mil|Location1.Y=4908.756mil|Location2.Y=4990.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11100.055mil|Location2.X=11283.567mil|Location1.Y=4908.756mil|Location2.Y=4990.417mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad U1-16(11126.299mil,4935mil) on Multi-Layer And Pad C7-1(11253.976mil,4950mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5851.315mil|Location2.X=6428.567mil|Location1.Y=2336.315mil|Location2.Y=2474.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5851.315mil|Location2.X=6428.567mil|Location1.Y=2336.315mil|Location2.Y=2474.433mil|Absolute=True">Un-Routed Net Constraint: Net NetD10_A Between Pad D10-A(5885mil,2370mil) on Multi-Layer And Pad R13-1(6399.961mil,2435mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5751.315mil|Location2.X=5883.685mil|Location1.Y=2336.315mil|Location2.Y=2728.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5751.315mil|Location2.X=5883.685mil|Location1.Y=2336.315mil|Location2.Y=2728.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D10-C(5785mil,2370mil) on Multi-Layer And Pad D11-C(5850mil,2695mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5476.315mil|Location2.X=5818.685mil|Location1.Y=2146.315mil|Location2.Y=2403.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5476.315mil|Location2.X=5818.685mil|Location1.Y=2146.315mil|Location2.Y=2403.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D8-C(5510mil,2180mil) on Multi-Layer And Pad D10-C(5785mil,2370mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5751.315mil|Location2.X=8846.48mil|Location1.Y=1827.575mil|Location2.Y=2403.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5751.315mil|Location2.X=8846.48mil|Location1.Y=1827.575mil|Location2.Y=2403.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D10-C(5785mil,2370mil) on Multi-Layer And Pad P1-4(8810mil,1864.055mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5916.315mil|Location2.X=6513.567mil|Location1.Y=2661.315mil|Location2.Y=3044.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5916.315mil|Location2.X=6513.567mil|Location1.Y=2661.315mil|Location2.Y=3044.433mil|Absolute=True">Un-Routed Net Constraint: Net NetD11_A Between Pad D11-A(5950mil,2695mil) on Multi-Layer And Pad R15-1(6484.961mil,3005mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5726.315mil|Location2.X=5883.685mil|Location1.Y=2661.315mil|Location2.Y=3048.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5726.315mil|Location2.X=5883.685mil|Location1.Y=2661.315mil|Location2.Y=3048.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D12-C(5760mil,3015mil) on Multi-Layer And Pad D11-C(5850mil,2695mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5826.315mil|Location2.X=6578.567mil|Location1.Y=2981.315mil|Location2.Y=3549.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5826.315mil|Location2.X=6578.567mil|Location1.Y=2981.315mil|Location2.Y=3549.433mil|Absolute=True">Un-Routed Net Constraint: Net NetD12_A Between Pad D12-A(5860mil,3015mil) on Multi-Layer And Pad R16-1(6549.961mil,3510mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5441.315mil|Location2.X=5793.685mil|Location1.Y=2981.315mil|Location2.Y=3223.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5441.315mil|Location2.X=5793.685mil|Location1.Y=2981.315mil|Location2.Y=3223.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D13-C(5475mil,3190mil) on Multi-Layer And Pad D12-C(5760mil,3015mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5541.315mil|Location2.X=6443.567mil|Location1.Y=3156.315mil|Location2.Y=3979.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5541.315mil|Location2.X=6443.567mil|Location1.Y=3156.315mil|Location2.Y=3979.433mil|Absolute=True">Un-Routed Net Constraint: Net NetD13_A Between Pad D13-A(5575mil,3190mil) on Multi-Layer And Pad R17-1(6414.961mil,3940mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5151.315mil|Location2.X=5508.685mil|Location1.Y=3156.315mil|Location2.Y=3338.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5151.315mil|Location2.X=5508.685mil|Location1.Y=3156.315mil|Location2.Y=3338.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D1-C(5185mil,3305mil) on Multi-Layer And Pad D13-C(5475mil,3190mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5251.315mil|Location2.X=5328.567mil|Location1.Y=3271.315mil|Location2.Y=3574.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5251.315mil|Location2.X=5328.567mil|Location1.Y=3271.315mil|Location2.Y=3574.433mil|Absolute=True">Un-Routed Net Constraint: Net NetD1_A Between Pad D1-A(5285mil,3305mil) on Multi-Layer And Pad R1-1(5299.961mil,3535mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4871.315mil|Location2.X=5218.685mil|Location1.Y=3156.315mil|Location2.Y=3338.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4871.315mil|Location2.X=5218.685mil|Location1.Y=3156.315mil|Location2.Y=3338.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D2-C(4905mil,3190mil) on Multi-Layer And Pad D1-C(5185mil,3305mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3951.354mil|Location2.X=5038.685mil|Location1.Y=3156.315mil|Location2.Y=4174.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3951.354mil|Location2.X=5038.685mil|Location1.Y=3156.315mil|Location2.Y=4174.433mil|Absolute=True">Un-Routed Net Constraint: Net NetD2_A Between Pad R4-1(3979.961mil,4135mil) on Top Layer And Pad D2-A(5005mil,3190mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3701.354mil|Location2.X=4763.685mil|Location1.Y=2956.315mil|Location2.Y=3399.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3701.354mil|Location2.X=4763.685mil|Location1.Y=2956.315mil|Location2.Y=3399.433mil|Absolute=True">Un-Routed Net Constraint: Net NetD3_A Between Pad R5-1(3729.961mil,3360mil) on Top Layer And Pad D3-A(4730mil,2990mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4506.315mil|Location2.X=4663.685mil|Location1.Y=2641.315mil|Location2.Y=3023.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4506.315mil|Location2.X=4663.685mil|Location1.Y=2641.315mil|Location2.Y=3023.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D4-C(4540mil,2675mil) on Multi-Layer And Pad D3-C(4630mil,2990mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816.354mil|Location2.X=4673.685mil|Location1.Y=2325.567mil|Location2.Y=2708.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816.354mil|Location2.X=4673.685mil|Location1.Y=2325.567mil|Location2.Y=2708.685mil|Absolute=True">Un-Routed Net Constraint: Net NetD4_A Between Pad R6-1(3844.961mil,2365mil) on Top Layer And Pad D4-A(4640mil,2675mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4506.315mil|Location2.X=4673.685mil|Location1.Y=2331.315mil|Location2.Y=2708.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4506.315mil|Location2.X=4673.685mil|Location1.Y=2331.315mil|Location2.Y=2708.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D4-C(4540mil,2675mil) on Multi-Layer And Pad D5-C(4640mil,2365mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4181.354mil|Location2.X=4773.685mil|Location1.Y=1800.567mil|Location2.Y=2398.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4181.354mil|Location2.X=4773.685mil|Location1.Y=1800.567mil|Location2.Y=2398.685mil|Absolute=True">Un-Routed Net Constraint: Net NetD5_A Between Pad R7-1(4209.961mil,1840mil) on Top Layer And Pad D5-A(4740mil,2365mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4606.315mil|Location2.X=4948.685mil|Location1.Y=2141.315mil|Location2.Y=2398.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4606.315mil|Location2.X=4948.685mil|Location1.Y=2141.315mil|Location2.Y=2398.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D5-C(4640mil,2365mil) on Multi-Layer And Pad D6-C(4915mil,2175mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4706.354mil|Location2.X=5048.685mil|Location1.Y=1685.567mil|Location2.Y=2208.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4706.354mil|Location2.X=5048.685mil|Location1.Y=1685.567mil|Location2.Y=2208.685mil|Absolute=True">Un-Routed Net Constraint: Net NetD6_A Between Pad R8-1(4734.961mil,1725mil) on Top Layer And Pad D6-A(5015mil,2175mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4881.315mil|Location2.X=5243.685mil|Location1.Y=2036.315mil|Location2.Y=2208.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4881.315mil|Location2.X=5243.685mil|Location1.Y=2036.315mil|Location2.Y=2208.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D6-C(4915mil,2175mil) on Multi-Layer And Pad D7-C(5210mil,2070mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5276.315mil|Location2.X=5423.567mil|Location1.Y=1440.567mil|Location2.Y=2103.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5276.315mil|Location2.X=5423.567mil|Location1.Y=1440.567mil|Location2.Y=2103.685mil|Absolute=True">Un-Routed Net Constraint: Net NetD7_A Between Pad D7-A(5310mil,2070mil) on Multi-Layer And Pad R9-1(5394.961mil,1480mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5176.315mil|Location2.X=5543.685mil|Location1.Y=2036.315mil|Location2.Y=2213.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5176.315mil|Location2.X=5543.685mil|Location1.Y=2036.315mil|Location2.Y=2213.685mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D7-C(5210mil,2070mil) on Multi-Layer And Pad D8-C(5510mil,2180mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5576.315mil|Location2.X=5998.606mil|Location1.Y=1725.567mil|Location2.Y=2213.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5576.315mil|Location2.X=5998.606mil|Location1.Y=1725.567mil|Location2.Y=2213.685mil|Absolute=True">Un-Routed Net Constraint: Net NetD8_A Between Pad D8-A(5610mil,2180mil) on Multi-Layer And Pad R10-1(5970mil,1765mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10662.535mil|Location2.X=11148.213mil|Location1.Y=3011.394mil|Location2.Y=3301.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10662.535mil|Location2.X=11148.213mil|Location1.Y=3011.394mil|Location2.Y=3301.953mil|Absolute=True">Un-Routed Net Constraint: Net NetD9_A Between Pad D9-A(10700mil,3248.74mil) on Top Layer And Pad LS1-N(11095mil,3064.606mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9313.953mil|Location2.X=10737.465mil|Location1.Y=3057.85mil|Location2.Y=3309.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9313.953mil|Location2.X=10737.465mil|Location1.Y=3057.85mil|Location2.Y=3309.945mil|Absolute=True">Un-Routed Net Constraint: Net NetD9_A Between Pad Q1-PAD(9440mil,3183.898mil) on Top Layer And Pad D9-A(10700mil,3248.74mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10662.535mil|Location2.X=11148.213mil|Location1.Y=2712.181mil|Location2.Y=3144.472mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10662.535mil|Location2.X=11148.213mil|Location1.Y=2712.181mil|Location2.Y=3144.472mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad D9-C(10700mil,3091.26mil) on Top Layer And Pad LS1-P(11095mil,2765.394mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9510.236mil|Location2.X=9789.764mil|Location1.Y=4927.598mil|Location2.Y=4976.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9510.236mil|Location2.X=9789.764mil|Location1.Y=4927.598mil|Location2.Y=4976.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J1-A1_B12(9524.016mil,4952.205mil) on Top Layer And Pad J1-B1_A12(9775.984mil,4952.205mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9456.236mil|Location2.X=9537.795mil|Location1.Y=4884.228mil|Location2.Y=4976.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9456.236mil|Location2.X=9537.795mil|Location1.Y=4884.228mil|Location2.Y=4976.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J1-SH1(9479.921mil,4929.567mil) on Multi-Layer And Pad J1-A1_B12(9524.016mil,4952.205mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9541.732mil|Location2.X=9758.268mil|Location1.Y=4927.598mil|Location2.Y=4976.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9541.732mil|Location2.X=9758.268mil|Location1.Y=4927.598mil|Location2.Y=4976.811mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad J1-A4_B9(9555.512mil,4952.205mil) on Top Layer And Pad J1-B4_A9(9744.488mil,4952.205mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9073.48mil|Location2.X=9569.291mil|Location1.Y=4927.598mil|Location2.Y=4976.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9073.48mil|Location2.X=9569.291mil|Location1.Y=4927.598mil|Location2.Y=4976.811mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad U2-16(9103.268mil,4950mil) on Top Layer And Pad J1-A4_B9(9555.512mil,4952.205mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9632.283mil|Location2.X=9687.402mil|Location1.Y=4927.598mil|Location2.Y=4976.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9632.283mil|Location2.X=9687.402mil|Location1.Y=4927.598mil|Location2.Y=4976.811mil|Absolute=True">Un-Routed Net Constraint: Net TypeC_P Between Pad J1-A6(9640.157mil,4952.205mil) on Top Layer And Pad J1-B6(9679.528mil,4952.205mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9612.598mil|Location2.X=9667.717mil|Location1.Y=4927.598mil|Location2.Y=4976.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9612.598mil|Location2.X=9667.717mil|Location1.Y=4927.598mil|Location2.Y=4976.811mil|Absolute=True">Un-Routed Net Constraint: Net TypeC_N Between Pad J1-B7(9620.472mil,4952.205mil) on Top Layer And Pad J1-A7(9659.843mil,4952.205mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9651.969mil|Location2.X=9773.409mil|Location1.Y=3186.984mil|Location2.Y=4976.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9651.969mil|Location2.X=9773.409mil|Location1.Y=3186.984mil|Location2.Y=4976.811mil|Absolute=True">Un-Routed Net Constraint: Net TypeC_N Between Pad J1-A7(9659.843mil,4952.205mil) on Top Layer And Pad U4-3(9745.591mil,3202.598mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9762.205mil|Location2.X=9843.764mil|Location1.Y=4884.228mil|Location2.Y=4976.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9762.205mil|Location2.X=9843.764mil|Location1.Y=4884.228mil|Location2.Y=4976.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J1-B1_A12(9775.984mil,4952.205mil) on Top Layer And Pad J1-SH2(9820.079mil,4929.567mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7211.354mil|Location2.X=9726.772mil|Location1.Y=4910.567mil|Location2.Y=4989.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7211.354mil|Location2.X=9726.772mil|Location1.Y=4910.567mil|Location2.Y=4989.433mil|Absolute=True">Un-Routed Net Constraint: Net NetJ1_B5 Between Pad R3-1(7239.961mil,4950mil) on Top Layer And Pad J1-B5(9718.898mil,4952.205mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9671.654mil|Location2.X=9773.409mil|Location1.Y=3261.787mil|Location2.Y=4976.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9671.654mil|Location2.X=9773.409mil|Location1.Y=3261.787mil|Location2.Y=4976.811mil|Absolute=True">Un-Routed Net Constraint: Net TypeC_P Between Pad J1-B6(9679.528mil,4952.205mil) on Top Layer And Pad U4-1(9745.591mil,3277.402mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9456.236mil|Location2.X=9503.606mil|Location1.Y=4725.567mil|Location2.Y=4974.905mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9456.236mil|Location2.X=9503.606mil|Location1.Y=4725.567mil|Location2.Y=4974.905mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J1-SH3(9479.921mil,4765mil) on Multi-Layer And Pad J1-SH1(9479.921mil,4929.567mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9206.354mil|Location2.X=9503.606mil|Location1.Y=4884.228mil|Location2.Y=4989.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9206.354mil|Location2.X=9503.606mil|Location1.Y=4884.228mil|Location2.Y=4989.433mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R2-1(9234.961mil,4950mil) on Top Layer And Pad J1-SH1(9479.921mil,4929.567mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9796.394mil|Location2.X=9843.764mil|Location1.Y=4725.567mil|Location2.Y=4974.905mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9796.394mil|Location2.X=9843.764mil|Location1.Y=4725.567mil|Location2.Y=4974.905mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J1-SH4(9820.079mil,4765mil) on Multi-Layer And Pad J1-SH2(9820.079mil,4929.567mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9796.394mil|Location2.X=11152.543mil|Location1.Y=4608.756mil|Location2.Y=4804.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9796.394mil|Location2.X=11152.543mil|Location1.Y=4608.756mil|Location2.Y=4804.433mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J1-SH4(9820.079mil,4765mil) on Multi-Layer And Pad U1-13(11126.299mil,4635mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9717.772mil|Location2.X=9843.764mil|Location1.Y=3224.386mil|Location2.Y=4804.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9717.772mil|Location2.X=9843.764mil|Location1.Y=3224.386mil|Location2.Y=4804.433mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U4-2(9745.591mil,3240mil) on Top Layer And Pad J1-SH4(9820.079mil,4765mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11041.787mil|Location2.X=11152.543mil|Location1.Y=2712.181mil|Location2.Y=4361.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11041.787mil|Location2.X=11152.543mil|Location1.Y=2712.181mil|Location2.Y=4361.244mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad LS1-P(11095mil,2765.394mil) on Multi-Layer And Pad U1-10(11126.299mil,4335mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8973.52mil|Location2.X=10054.354mil|Location1.Y=1790.528mil|Location2.Y=1900.535mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8973.52mil|Location2.X=10054.354mil|Location1.Y=1790.528mil|Location2.Y=1900.535mil|Absolute=True">Un-Routed Net Constraint: Net NRST Between Pad P1-2(9010mil,1864.055mil) on Multi-Layer And Pad U5-4(10020.827mil,1803.386mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8873.52mil|Location2.X=10282.701mil|Location1.Y=1816.118mil|Location2.Y=1900.535mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8873.52mil|Location2.X=10282.701mil|Location1.Y=1816.118mil|Location2.Y=1900.535mil|Absolute=True">Un-Routed Net Constraint: Net SWIM Between Pad P1-3(8910mil,1864.055mil) on Multi-Layer And Pad U5-18(10249.173mil,1828.976mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8773.52mil|Location2.X=9303.567mil|Location1.Y=1810.567mil|Location2.Y=1900.535mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8773.52mil|Location2.X=9303.567mil|Location1.Y=1810.567mil|Location2.Y=1900.535mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P1-4(8810mil,1864.055mil) on Multi-Layer And Pad R19-1(9274.961mil,1850mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9313.953mil|Location2.X=9566.047mil|Location1.Y=2953.913mil|Location2.Y=3309.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9313.953mil|Location2.X=9566.047mil|Location1.Y=2953.913mil|Location2.Y=3309.945mil|Absolute=True">Un-Routed Net Constraint: Net NetD9_A Between Pad Q1-2(9440mil,2977.992mil) on Top Layer And Pad Q1-PAD(9440mil,3183.898mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9506.866mil|Location2.X=9773.409mil|Location1.Y=2890.528mil|Location2.Y=3255.614mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9506.866mil|Location2.X=9773.409mil|Location1.Y=2890.528mil|Location2.Y=3255.614mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad Q1-3(9530.551mil,2947.677mil) on Top Layer And Pad U4-2(9745.591mil,3240mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9001.354mil|Location2.X=9872.228mil|Location1.Y=3210.567mil|Location2.Y=3293.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9001.354mil|Location2.X=9872.228mil|Location1.Y=3210.567mil|Location2.Y=3293.016mil|Absolute=True">Un-Routed Net Constraint: Net NetR11_1 Between Pad R11-1(9029.961mil,3250mil) on Top Layer And Pad U4-6(9844.409mil,3277.402mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7881.354mil|Location2.X=8533.567mil|Location1.Y=3210.567mil|Location2.Y=3289.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7881.354mil|Location2.X=8533.567mil|Location1.Y=3210.567mil|Location2.Y=3289.433mil|Absolute=True">Un-Routed Net Constraint: Net C4 Between Pad R14-1(7909.961mil,3250mil) on Top Layer And Pad R12-1(8504.961mil,3250mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8476.354mil|Location2.X=10282.701mil|Location1.Y=1713.756mil|Location2.Y=3289.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8476.354mil|Location2.X=10282.701mil|Location1.Y=1713.756mil|Location2.Y=3289.433mil|Absolute=True">Un-Routed Net Constraint: Net C4 Between Pad R12-1(8504.961mil,3250mil) on Top Layer And Pad U5-14(10249.173mil,1726.614mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9816.591mil|Location2.X=10748.567mil|Location1.Y=1810.567mil|Location2.Y=3218.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9816.591mil|Location2.X=10748.567mil|Location1.Y=1810.567mil|Location2.Y=3218.213mil|Absolute=True">Un-Routed Net Constraint: Net NetR18_1 Between Pad U4-4(9844.409mil,3202.598mil) on Top Layer And Pad R18-1(10719.961mil,1850mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9246.354mil|Location2.X=10054.354mil|Location1.Y=1713.756mil|Location2.Y=1889.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9246.354mil|Location2.X=10054.354mil|Location1.Y=1713.756mil|Location2.Y=1889.433mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R19-1(9274.961mil,1850mil) on Top Layer And Pad U5-7(10020.827mil,1726.614mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8856.945mil|Location2.X=9263.567mil|Location1.Y=4910.567mil|Location2.Y=4989.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8856.945mil|Location2.X=9263.567mil|Location1.Y=4910.567mil|Location2.Y=4989.433mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U2-1(8886.732mil,4950mil) on Top Layer And Pad R2-1(9234.961mil,4950mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11100.055mil|Location2.X=11152.543mil|Location1.Y=4308.756mil|Location2.Y=4961.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11100.055mil|Location2.X=11152.543mil|Location1.Y=4308.756mil|Location2.Y=4961.244mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad U1-10(11126.299mil,4335mil) on Multi-Layer And Pad U1-16(11126.299mil,4935mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10265.055mil|Location2.X=11152.543mil|Location1.Y=2708.756mil|Location2.Y=4461.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10265.055mil|Location2.X=11152.543mil|Location1.Y=2708.756mil|Location2.Y=4461.244mil|Absolute=True">Un-Routed Net Constraint: Net D4 Between Pad U3-11(10291.299mil,2735mil) on Multi-Layer And Pad U1-11(11126.299mil,4435mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10787.457mil|Location2.X=11152.543mil|Location1.Y=4208.756mil|Location2.Y=4661.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10787.457mil|Location2.X=11152.543mil|Location1.Y=4208.756mil|Location2.Y=4661.244mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-8(10813.701mil,4235mil) on Multi-Layer And Pad U1-13(11126.299mil,4635mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10215.646mil|Location2.X=11152.543mil|Location1.Y=1867.299mil|Location2.Y=4761.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10215.646mil|Location2.X=11152.543mil|Location1.Y=1867.299mil|Location2.Y=4761.244mil|Absolute=True">Un-Routed Net Constraint: Net D3 Between Pad U5-20(10249.173mil,1880.158mil) on Top Layer And Pad U1-14(11126.299mil,4735mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10265.055mil|Location2.X=11152.543mil|Location1.Y=3008.756mil|Location2.Y=4261.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10265.055mil|Location2.X=11152.543mil|Location1.Y=3008.756mil|Location2.Y=4261.244mil|Absolute=True">Un-Routed Net Constraint: Net 1-3 Between Pad U3-14(10291.299mil,3035mil) on Multi-Layer And Pad U1-9(11126.299mil,4235mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8856.945mil|Location2.X=10054.354mil|Location1.Y=1816.118mil|Location2.Y=4916.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8856.945mil|Location2.X=10054.354mil|Location1.Y=1816.118mil|Location2.Y=4916.205mil|Absolute=True">Un-Routed Net Constraint: Net RX Between Pad U2-2(8886.732mil,4900mil) on Top Layer And Pad U5-3(10020.827mil,1828.976mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8856.945mil|Location2.X=10054.354mil|Location1.Y=1841.709mil|Location2.Y=4866.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8856.945mil|Location2.X=10054.354mil|Location1.Y=1841.709mil|Location2.Y=4866.205mil|Absolute=True">Un-Routed Net Constraint: Net TX Between Pad U2-3(8886.732mil,4850mil) on Top Layer And Pad U5-2(10020.827mil,1854.567mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10265.055mil|Location2.X=10317.543mil|Location1.Y=2608.756mil|Location2.Y=3261.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10265.055mil|Location2.X=10317.543mil|Location1.Y=2608.756mil|Location2.Y=3261.244mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad U3-10(10291.299mil,2635mil) on Multi-Layer And Pad U3-16(10291.299mil,3235mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9987.299mil|Location2.X=10317.543mil|Location1.Y=1662.575mil|Location2.Y=2661.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9987.299mil|Location2.X=10317.543mil|Location1.Y=1662.575mil|Location2.Y=2661.244mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad U5-9(10020.827mil,1675.433mil) on Top Layer And Pad U3-10(10291.299mil,2635mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9987.299mil|Location2.X=10317.543mil|Location1.Y=1867.299mil|Location2.Y=2761.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9987.299mil|Location2.X=10317.543mil|Location1.Y=1867.299mil|Location2.Y=2761.244mil|Absolute=True">Un-Routed Net Constraint: Net D4 Between Pad U5-1(10020.827mil,1880.158mil) on Top Layer And Pad U3-11(10291.299mil,2735mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10215.646mil|Location2.X=10317.543mil|Location1.Y=1841.709mil|Location2.Y=2861.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10215.646mil|Location2.X=10317.543mil|Location1.Y=1841.709mil|Location2.Y=2861.244mil|Absolute=True">Un-Routed Net Constraint: Net D2 Between Pad U5-19(10249.173mil,1854.567mil) on Top Layer And Pad U3-12(10291.299mil,2835mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9952.457mil|Location2.X=10317.543mil|Location1.Y=2508.756mil|Location2.Y=2961.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9952.457mil|Location2.X=10317.543mil|Location1.Y=2508.756mil|Location2.Y=2961.244mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U3-8(9978.701mil,2535mil) on Multi-Layer And Pad U3-13(10291.299mil,2935mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9717.772mil|Location2.X=10317.543mil|Location1.Y=2908.756mil|Location2.Y=3255.614mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9717.772mil|Location2.X=10317.543mil|Location1.Y=2908.756mil|Location2.Y=3255.614mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U4-2(9745.591mil,3240mil) on Top Layer And Pad U3-13(10291.299mil,2935mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9816.591mil|Location2.X=10317.543mil|Location1.Y=3208.756mil|Location2.Y=3261.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9816.591mil|Location2.X=10317.543mil|Location1.Y=3208.756mil|Location2.Y=3261.244mil|Absolute=True">Un-Routed Net Constraint: Net +5V Between Pad U4-5(9844.409mil,3240mil) on Top Layer And Pad U3-16(10291.299mil,3235mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9952.457mil|Location2.X=10054.354mil|Location1.Y=1713.756mil|Location2.Y=2561.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9952.457mil|Location2.X=10054.354mil|Location1.Y=1713.756mil|Location2.Y=2561.244mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U3-8(9978.701mil,2535mil) on Multi-Layer And Pad U5-7(10020.827mil,1726.614mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDELX4VJRRHINDMXCSA1UHNDOYKHHM40HHMXGG01OIXZRTJWMB5DDD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9530.595mil|Location2.X=9541.845mil|Location1.Y=4921.513mil|Location2.Y=4932.763mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9530.595mil|Location2.X=9541.845mil|Location1.Y=4921.513mil|Location2.Y=4932.763mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.921mil &lt; 10mil) Between Pad J1-(9536.22mil,4909.882mil) on Multi-Layer And Pad J1-A1_B12(9524.016mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [0.921mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9535.846mil|Location2.X=9547.096mil|Location1.Y=4921.134mil|Location2.Y=4932.384mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9535.846mil|Location2.X=9547.096mil|Location1.Y=4921.134mil|Location2.Y=4932.384mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.759mil &lt; 10mil) Between Pad J1-(9536.22mil,4909.882mil) on Multi-Layer And Pad J1-A4_B9(9555.512mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [1.759mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9758.155mil|Location2.X=9769.405mil|Location1.Y=4921.513mil|Location2.Y=4932.763mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9758.155mil|Location2.X=9769.405mil|Location1.Y=4921.513mil|Location2.Y=4932.763mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.921mil &lt; 10mil) Between Pad J1-(9763.78mil,4909.882mil) on Multi-Layer And Pad J1-B1_A12(9775.984mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [0.921mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9752.904mil|Location2.X=9764.154mil|Location1.Y=4921.134mil|Location2.Y=4932.384mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9752.904mil|Location2.X=9764.154mil|Location1.Y=4921.134mil|Location2.Y=4932.384mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.759mil &lt; 10mil) Between Pad J1-(9763.78mil,4909.882mil) on Multi-Layer And Pad J1-B4_A9(9744.488mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [1.759mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9534.139mil|Location2.X=9545.389mil|Location1.Y=4971.186mil|Location2.Y=4982.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9534.139mil|Location2.X=9545.389mil|Location1.Y=4971.186mil|Location2.Y=4982.436mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-A1_B12(9524.016mil,4952.205mil) on Top Layer And Pad J1-A4_B9(9555.512mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9501.296mil|Location2.X=9512.546mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9501.296mil|Location2.X=9512.546mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (6.63mil &lt; 10mil) Between Pad J1-A1_B12(9524.016mil,4952.205mil) on Top Layer And Pad J1-SH1(9479.921mil,4929.567mil) on Multi-Layer [Top Solder] Mask Sliver [6.63mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9565.635mil|Location2.X=9576.885mil|Location1.Y=4971.186mil|Location2.Y=4982.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9565.635mil|Location2.X=9576.885mil|Location1.Y=4971.186mil|Location2.Y=4982.436mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-A4_B9(9555.512mil,4952.205mil) on Top Layer And Pad J1-B8(9581.102mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9605.005mil|Location2.X=9616.255mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9605.005mil|Location2.X=9616.255mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-A5(9600.787mil,4952.205mil) on Top Layer And Pad J1-B7(9620.472mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9585.32mil|Location2.X=9596.57mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9585.32mil|Location2.X=9596.57mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-A5(9600.787mil,4952.205mil) on Top Layer And Pad J1-B8(9581.102mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9644.375mil|Location2.X=9655.625mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9644.375mil|Location2.X=9655.625mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-A6(9640.157mil,4952.205mil) on Top Layer And Pad J1-A7(9659.843mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9624.69mil|Location2.X=9635.94mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9624.69mil|Location2.X=9635.94mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-A6(9640.157mil,4952.205mil) on Top Layer And Pad J1-B7(9620.472mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9664.06mil|Location2.X=9675.31mil|Location1.Y=4971.186mil|Location2.Y=4982.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9664.06mil|Location2.X=9675.31mil|Location1.Y=4971.186mil|Location2.Y=4982.436mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-A7(9659.843mil,4952.205mil) on Top Layer And Pad J1-B6(9679.528mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9703.43mil|Location2.X=9714.68mil|Location1.Y=4971.186mil|Location2.Y=4982.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9703.43mil|Location2.X=9714.68mil|Location1.Y=4971.186mil|Location2.Y=4982.436mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-A8(9699.213mil,4952.205mil) on Top Layer And Pad J1-B5(9718.898mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9683.745mil|Location2.X=9694.995mil|Location1.Y=4971.186mil|Location2.Y=4982.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9683.745mil|Location2.X=9694.995mil|Location1.Y=4971.186mil|Location2.Y=4982.436mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-A8(9699.213mil,4952.205mil) on Top Layer And Pad J1-B6(9679.528mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9754.611mil|Location2.X=9765.861mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9754.611mil|Location2.X=9765.861mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-B1_A12(9775.984mil,4952.205mil) on Top Layer And Pad J1-B4_A9(9744.488mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9787.454mil|Location2.X=9798.704mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9787.454mil|Location2.X=9798.704mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (6.63mil &lt; 10mil) Between Pad J1-B1_A12(9775.984mil,4952.205mil) on Top Layer And Pad J1-SH2(9820.079mil,4929.567mil) on Multi-Layer [Top Solder] Mask Sliver [6.63mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9723.115mil|Location2.X=9734.365mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9723.115mil|Location2.X=9734.365mil|Location1.Y=4921.973mil|Location2.Y=4933.223mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.937mil &lt; 10mil) Between Pad J1-B4_A9(9744.488mil,4952.205mil) on Top Layer And Pad J1-B5(9718.898mil,4952.205mil) on Top Layer [Top Solder] Mask Sliver [3.937mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9760.881mil|Location2.X=9772.131mil|Location1.Y=3253.076mil|Location2.Y=3264.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9760.881mil|Location2.X=9772.131mil|Location1.Y=3253.076mil|Location2.Y=3264.326mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (6.173mil &lt; 10mil) Between Pad U4-1(9745.591mil,3277.402mil) on Top Layer And Pad U4-2(9745.591mil,3240mil) on Top Layer [Top Solder] Mask Sliver [6.173mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9760.881mil|Location2.X=9772.131mil|Location1.Y=3215.674mil|Location2.Y=3226.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9760.881mil|Location2.X=9772.131mil|Location1.Y=3215.674mil|Location2.Y=3226.924mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (6.173mil &lt; 10mil) Between Pad U4-2(9745.591mil,3240mil) on Top Layer And Pad U4-3(9745.591mil,3202.598mil) on Top Layer [Top Solder] Mask Sliver [6.173mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9817.869mil|Location2.X=9829.119mil|Location1.Y=3215.674mil|Location2.Y=3226.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9817.869mil|Location2.X=9829.119mil|Location1.Y=3215.674mil|Location2.Y=3226.924mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (6.173mil &lt; 10mil) Between Pad U4-4(9844.409mil,3202.598mil) on Top Layer And Pad U4-5(9844.409mil,3240mil) on Top Layer [Top Solder] Mask Sliver [6.173mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9817.869mil|Location2.X=9829.119mil|Location1.Y=3253.076mil|Location2.Y=3264.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9817.869mil|Location2.X=9829.119mil|Location1.Y=3253.076mil|Location2.Y=3264.326mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (6.173mil &lt; 10mil) Between Pad U4-5(9844.409mil,3240mil) on Top Layer And Pad U4-6(9844.409mil,3277.402mil) on Top Layer [Top Solder] Mask Sliver [6.173mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDXJKOCP0YBQF1CQWNWW4DWR3Z4GDDINAVY3M3LNGGD3QPQ3CXNO2L"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4370.039mil|Location2.X=4426.282mil|Location1.Y=3482.961mil|Location2.Y=3571.825mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Casino\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4370.039mil|Location2.X=4426.282mil|Location1.Y=3482.961mil|Location2.Y=3571.825mil|Absolute=True">Net Antennae: Arc (4600mil,3506.461mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
