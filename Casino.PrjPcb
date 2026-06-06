@@ -1147,16 +1147,178 @@ NetClassManualEnabled=1
 NetClassSeparateForBusSections=0
 
 [LibraryUpdateOptions]
-SelectedOnly=1
+SelectedOnly=0
 UpdateVariants=1
 UpdateToLatestRevision=1
 PartTypes=0
-ComponentLibIdentifierKind0=Library Name And Type
-ComponentLibraryIdentifier0=SchlibCasino.SchLib
-ComponentDesignItemID0=USBLC6-2SC6
-ComponentSymbolReference0=USBLC6-2SC6
+ComponentLibIdentifierKind0=Any
+ComponentLibraryIdentifier0=
+ComponentDesignItemID0=AMS1117
+ComponentSymbolReference0=AMS1117
 ComponentUpdate0=1
 ComponentIsDeviceSheet0=0
+ComponentLibIdentifierKind1=Any
+ComponentLibraryIdentifier1=
+ComponentDesignItemID1=Cap_1206
+ComponentSymbolReference1=Cap_1206
+ComponentUpdate1=1
+ComponentIsDeviceSheet1=0
+ComponentLibIdentifierKind2=Any
+ComponentLibraryIdentifier2=
+ComponentDesignItemID2=CH340С
+ComponentSymbolReference2=CH340С
+ComponentUpdate2=1
+ComponentIsDeviceSheet2=0
+ComponentLibIdentifierKind3=Any
+ComponentLibraryIdentifier3=
+ComponentDesignItemID3=Conector_4pin
+ComponentSymbolReference3=Conector_4pin
+ComponentUpdate3=1
+ComponentIsDeviceSheet3=0
+ComponentLibIdentifierKind4=Any
+ComponentLibraryIdentifier4=
+ComponentDesignItemID4=Diode standart
+ComponentSymbolReference4=Diode standart
+ComponentUpdate4=1
+ComponentIsDeviceSheet4=0
+ComponentLibIdentifierKind5=Any
+ComponentLibraryIdentifier5=
+ComponentDesignItemID5=Diode
+ComponentSymbolReference5=Diode
+ComponentUpdate5=1
+ComponentIsDeviceSheet5=0
+ComponentLibIdentifierKind6=Any
+ComponentLibraryIdentifier6=
+ComponentDesignItemID6=IRLR2905TRPBF
+ComponentSymbolReference6=IRLR2905TRPBF
+ComponentUpdate6=1
+ComponentIsDeviceSheet6=0
+ComponentLibIdentifierKind7=Any
+ComponentLibraryIdentifier7=
+ComponentDesignItemID7=NPN transistor
+ComponentSymbolReference7=NPN transistor
+ComponentUpdate7=1
+ComponentIsDeviceSheet7=0
+ComponentLibIdentifierKind8=Any
+ComponentLibraryIdentifier8=
+ComponentDesignItemID8=Res_1206
+ComponentSymbolReference8=Res_1206
+ComponentUpdate8=1
+ComponentIsDeviceSheet8=0
+ComponentLibIdentifierKind9=Any
+ComponentLibraryIdentifier9=
+ComponentDesignItemID9=SN74HC595N
+ComponentSymbolReference9=SN74HC595N
+ComponentUpdate9=1
+ComponentIsDeviceSheet9=0
+ComponentLibIdentifierKind10=Any
+ComponentLibraryIdentifier10=
+ComponentDesignItemID10=Speaker
+ComponentSymbolReference10=Speaker
+ComponentUpdate10=1
+ComponentIsDeviceSheet10=0
+ComponentLibIdentifierKind11=Any
+ComponentLibraryIdentifier11=
+ComponentDesignItemID11=STM8S103F3P6
+ComponentSymbolReference11=STM8S103F3P6
+ComponentUpdate11=1
+ComponentIsDeviceSheet11=0
+ComponentLibIdentifierKind12=Any
+ComponentLibraryIdentifier12=
+ComponentDesignItemID12=USB_Type_C
+ComponentSymbolReference12=USB_Type_C
+ComponentUpdate12=1
+ComponentIsDeviceSheet12=0
+ComponentLibIdentifierKind13=Any
+ComponentLibraryIdentifier13=
+ComponentDesignItemID13=USBLC6-2SC6
+ComponentSymbolReference13=USBLC6-2SC6
+ComponentUpdate13=1
+ComponentIsDeviceSheet13=0
+ComponentLibIdentifierKind14=Any
+ComponentLibraryIdentifier14=
+ComponentDesignItemID14=VS-1213-67-160GF
+ComponentSymbolReference14=VS-1213-67-160GF
+ComponentUpdate14=1
+ComponentIsDeviceSheet14=0
+ComponentLibIdentifierKind15=Library Name And Type
+ComponentLibraryIdentifier15=SchlibCasino.SchLib
+ComponentDesignItemID15=Cap_1206
+ComponentSymbolReference15=Cap_1206
+ComponentUpdate15=1
+ComponentIsDeviceSheet15=0
+ComponentLibIdentifierKind16=Library Name And Type
+ComponentLibraryIdentifier16=SchlibCasino.SchLib
+ComponentDesignItemID16=CH340С
+ComponentSymbolReference16=CH340С
+ComponentUpdate16=1
+ComponentIsDeviceSheet16=0
+ComponentLibIdentifierKind17=Library Name And Type
+ComponentLibraryIdentifier17=SchlibCasino.SchLib
+ComponentDesignItemID17=Conector_4pin
+ComponentSymbolReference17=Conector_4pin
+ComponentUpdate17=1
+ComponentIsDeviceSheet17=0
+ComponentLibIdentifierKind18=Library Name And Type
+ComponentLibraryIdentifier18=SchlibCasino.SchLib
+ComponentDesignItemID18=Diode standart
+ComponentSymbolReference18=Diode standart
+ComponentUpdate18=1
+ComponentIsDeviceSheet18=0
+ComponentLibIdentifierKind19=Library Name And Type
+ComponentLibraryIdentifier19=SchlibCasino.SchLib
+ComponentDesignItemID19=Diode
+ComponentSymbolReference19=Diode
+ComponentUpdate19=1
+ComponentIsDeviceSheet19=0
+ComponentLibIdentifierKind20=Library Name And Type
+ComponentLibraryIdentifier20=SchlibCasino.SchLib
+ComponentDesignItemID20=IRLR2905TRPBF
+ComponentSymbolReference20=IRLR2905TRPBF
+ComponentUpdate20=1
+ComponentIsDeviceSheet20=0
+ComponentLibIdentifierKind21=Library Name And Type
+ComponentLibraryIdentifier21=SchlibCasino.SchLib
+ComponentDesignItemID21=Res_1206
+ComponentSymbolReference21=Res_1206
+ComponentUpdate21=1
+ComponentIsDeviceSheet21=0
+ComponentLibIdentifierKind22=Library Name And Type
+ComponentLibraryIdentifier22=SchlibCasino.SchLib
+ComponentDesignItemID22=SN74HC595N
+ComponentSymbolReference22=SN74HC595N
+ComponentUpdate22=1
+ComponentIsDeviceSheet22=0
+ComponentLibIdentifierKind23=Library Name And Type
+ComponentLibraryIdentifier23=SchlibCasino.SchLib
+ComponentDesignItemID23=Speaker
+ComponentSymbolReference23=Speaker
+ComponentUpdate23=1
+ComponentIsDeviceSheet23=0
+ComponentLibIdentifierKind24=Library Name And Type
+ComponentLibraryIdentifier24=SchlibCasino.SchLib
+ComponentDesignItemID24=STM8S103F3P6
+ComponentSymbolReference24=STM8S103F3P6
+ComponentUpdate24=1
+ComponentIsDeviceSheet24=0
+ComponentLibIdentifierKind25=Library Name And Type
+ComponentLibraryIdentifier25=SchlibCasino.SchLib
+ComponentDesignItemID25=USB_Type_C
+ComponentSymbolReference25=USB_Type_C
+ComponentUpdate25=1
+ComponentIsDeviceSheet25=0
+ComponentLibIdentifierKind26=Library Name And Type
+ComponentLibraryIdentifier26=SchlibCasino.SchLib
+ComponentDesignItemID26=USBLC6-2SC6
+ComponentSymbolReference26=USBLC6-2SC6
+ComponentUpdate26=1
+ComponentIsDeviceSheet26=0
+ComponentLibIdentifierKind27=Library Name And Type
+ComponentLibraryIdentifier27=SchlibCasino.SchLib
+ComponentDesignItemID27=VS-1213-67-160GF
+ComponentSymbolReference27=VS-1213-67-160GF
+ComponentUpdate27=1
+ComponentIsDeviceSheet27=0
 FullReplace=1
 UpdateDesignatorLock=1
 UpdatePartIDLock=1
@@ -1178,6 +1340,61 @@ ParameterName2=Description
 ParameterUpdate2=1
 ParameterName3=Library Reference
 ParameterUpdate3=1
+ParameterName4=Value
+ParameterUpdate4=1
+ModelTypeGroup0=PCBLIB
+ModelTypeUpdate0=1
+ModelType0=PCBLIB
+ModelName0=AMS1117_SOT223
+ModelUpdate0=1
+ModelType1=PCBLIB
+ModelName1=Button
+ModelUpdate1=1
+ModelType2=PCBLIB
+ModelName2=Cap_1206
+ModelUpdate2=1
+ModelType3=PCBLIB
+ModelName3=CH340С
+ModelUpdate3=1
+ModelType4=PCBLIB
+ModelName4=Conector_4pins
+ModelUpdate4=1
+ModelType5=PCBLIB
+ModelName5=Diode standart
+ModelUpdate5=1
+ModelType6=PCBLIB
+ModelName6=Diode_Green
+ModelUpdate6=1
+ModelType7=PCBLIB
+ModelName7=Diode_Yellow
+ModelUpdate7=1
+ModelType8=PCBLIB
+ModelName8=IRLR2905TRPBF
+ModelUpdate8=1
+ModelType9=PCBLIB
+ModelName9=NPN transistor
+ModelUpdate9=1
+ModelType10=PCBLIB
+ModelName10=Res_1206
+ModelUpdate10=1
+ModelType11=PCBLIB
+ModelName11=SMD LED
+ModelUpdate11=1
+ModelType12=PCBLIB
+ModelName12=SN74HC595N
+ModelUpdate12=1
+ModelType13=PCBLIB
+ModelName13=SOP65P640X120-20N
+ModelUpdate13=1
+ModelType14=PCBLIB
+ModelName14=Speaker
+ModelUpdate14=1
+ModelType15=PCBLIB
+ModelName15=USB_Type_C
+ModelUpdate15=1
+ModelType16=PCBLIB
+ModelName16=USBLC6-2SC6
+ModelUpdate16=1
 
 [DatabaseUpdateOptions]
 SelectedOnly=0
@@ -1205,28 +1422,32 @@ Net16=NetName=NetR1_1|NetColor=clYellow
 Net17=NetName=NetR10_1|NetColor=clYellow
 Net18=NetName=NetR11_1|NetColor=clYellow
 Net19=NetName=NetR12_1|NetColor=clYellow
-Net20=NetName=NetR2_1|NetColor=clYellow
-Net21=NetName=NetR3_1|NetColor=clYellow
-Net22=NetName=NetR4_1|NetColor=clYellow
-Net23=NetName=NetR5_1|NetColor=clYellow
-Net24=NetName=NetR6_1|NetColor=clYellow
-Net25=NetName=NetR7_1|NetColor=clYellow
-Net26=NetName=NetR8_1|NetColor=clYellow
-Net27=NetName=NetR9_1|NetColor=clYellow
-Net28=NetName=NetRs1_2|NetColor=$00FF6E6E
-Net29=NetName=NetSW1_3|NetColor=$00FF6E6E
-Net30=NetName=NetU1_10|NetColor=$00FF6EFF
-Net31=NetName=NetU1_11|NetColor=$00FF6E6E
-Net32=NetName=NetU1_12|NetColor=$00FF6E6E
-Net33=NetName=NetU1_14|NetColor=$00FF6E6E
-Net34=NetName=NetU1_9|NetColor=clYellow
-Net35=NetName=NetUstm_14|NetColor=$00FF6E6E
-Net36=NetName=NetUstm_18|NetColor=$00FF6E6E
-Net37=NetName=NetUstm_19|NetColor=$00FF6E6E
-Net38=NetName=NetUstm_20|NetColor=$00FF6E6E
-Net39=NetName=NRST|NetColor=$00FFFF6E
-Net40=NetName=SWIM|NetColor=$00FFFF6E
-Net41=NetName=VCC|NetColor=$00FF6EFF
+Net20=NetName=NetR13_1|NetColor=clYellow
+Net21=NetName=NetR15_1|NetColor=clYellow
+Net22=NetName=NetR16_1|NetColor=clYellow
+Net23=NetName=NetR17_1|NetColor=clYellow
+Net24=NetName=NetR2_1|NetColor=clYellow
+Net25=NetName=NetR3_1|NetColor=clYellow
+Net26=NetName=NetR4_1|NetColor=clYellow
+Net27=NetName=NetR5_1|NetColor=clYellow
+Net28=NetName=NetR6_1|NetColor=clYellow
+Net29=NetName=NetR7_1|NetColor=clYellow
+Net30=NetName=NetR8_1|NetColor=clYellow
+Net31=NetName=NetR9_1|NetColor=clYellow
+Net32=NetName=NetRs1_2|NetColor=$00FF6E6E
+Net33=NetName=NetSW1_3|NetColor=$00FF6E6E
+Net34=NetName=NetU1_10|NetColor=$00FF6EFF
+Net35=NetName=NetU1_11|NetColor=$00FF6E6E
+Net36=NetName=NetU1_12|NetColor=$00FF6E6E
+Net37=NetName=NetU1_14|NetColor=$00FF6E6E
+Net38=NetName=NetU1_9|NetColor=clYellow
+Net39=NetName=NetUstm_14|NetColor=$00FF6E6E
+Net40=NetName=NetUstm_18|NetColor=$00FF6E6E
+Net41=NetName=NetUstm_19|NetColor=$00FF6E6E
+Net42=NetName=NetUstm_20|NetColor=$00FF6E6E
+Net43=NetName=NRST|NetColor=$00FFFF6E
+Net44=NetName=SWIM|NetColor=$00FFFF6E
+Net45=NetName=VCC|NetColor=$00FF6EFF
 
 [Comparison Options]
 ComparisonOptions0=Kind=Net|MinPercent=75|MinMatch=3|ShowMatch=0|UseName=-1|InclAllRules=0
